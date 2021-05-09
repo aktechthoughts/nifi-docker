@@ -26,10 +26,54 @@ services:
     ports:
       - 8080 # Unsecured HTTP Web Port
     volumes:
-      - ./ext_lib:/opt/nifi/nifi-current/ext_lib
+        # mkdir ./opt/nifi/ && chown -R 1000:1000 .
+    - ./opt/nifi/database_repository:/opt/nifi/nifi-current/database_repository
+    - ./opt/nifi/flowfile_repository:/opt/nifi/nifi-current/flowfile_repository
+    - ./opt/nifi/content_repository:/opt/nifi/nifi-current/content_repository
+    - ./opt/nifi/provenance_repository:/opt/nifi/nifi-current/provenance_repository
+    - ./opt/nifi/state:/opt/nifi/nifi-current/state
+    - ./opt/nifi/logs:/opt/nifi/nifi-current/logs
+    - ./opt/nifi/conf:/opt/nifi/nifi-current/conf
     environment:
       - NIFI_WEB_HTTP_PORT=8080
       - NIFI_CLUSTER_IS_NODE=true
       - NIFI_CLUSTER_NODE_PROTOCOL_PORT=8082
       - NIFI_ZK_CONNECT_STRING=zookeeper:2181
       - NIFI_ELECTION_MAX_WAIT=1 min
+      - NIFI_REMOTE_INPUT_HOST= '192.168.173.2'
+
+      #- NIFI_JVM_HEAP_INIT= 512m
+      #- NIFI_JVM_HEAP_MAX= 512m
+      #- NIFI_JVM_DEBUGGER= ''
+
+      #- NIFI_WEB_HTTPS_HOST= '0.0.0.0'
+      #- NIFI_WEB_HTTP_PORT= 8443
+    
+      #- NIFI_WEB_PROXY_HOST= ''
+      #- NIFI_WEB_PROXY_CONTEXT_PATH= ''
+      #- NIFI_CLUSTER_IS_NODE= 'false'
+       
+      #- NIFI_CLUSTER_NODE_PROTOCOL_PORT= 11443
+      #- NIFI_CLUSTER_NODE_PROTOCOL_THREADS= 10
+      #- NIFI_CLUSTER_NODE_PROTOCOL_MAX_THREADS= 50
+      #- NIFI_CLUSTER_NODE_ADDRESS='' 
+      #- NIFI_REMOTE_INPUT_SOCKET_PORT= 10000
+      #- NIFI_ZK_ROOT_NODE= '/nifi'
+      #- NIFI_ELECTION_MAX_CANDIDATES= ''
+      #- NIFI_VARIABLE_REGISTRY_PROPERTIES= ''
+
+      #KEYSTORE_PATH= '/opt/certs/keystore.jks'
+      #KEYSTORE_PASSWORD= ''
+      #KEYSTORE_TYPE= JKS
+      #KEY_PASSWORD= ''
+      #TRUSTSTORE_PATH= '/opt/certs/truststore.jks'
+      #TRUSTSTORE_PASSWORD= ''
+      #TRUSTSTORE_TYPE= JKS
+    
+      #LDAP_TLS_KEYSTORE= ''
+      #LDAP_TLS_KEYSTORE_PASSWORD= ''
+      #LDAP_TLS_KEYSTORE_TYPE= ''
+      #LDAP_TLS_TRUSTSTORE= ''
+      #LDAP_TLS_TRUSTSTORE_PASSWORD= ''
+      #LDAP_TLS_TRUSTSTORE_TYPE= ''
+      #LDAP_TLS_PROTOCOL= ''
