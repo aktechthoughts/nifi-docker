@@ -3,5 +3,8 @@ content_repository/
 database_repository/
 flowfile_repository/
 provenance_repository/
+ext_lib/
 logs/
 state/
+conf/archive/
+conf/flow.xml.gz
