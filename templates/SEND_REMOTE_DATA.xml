@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <template encoding-version="1.3">
-    <description>This flow is used to send data to remote NiFi.</description>
+    <description>This flow is used to send data from raspberry pi to NiFi.</description>
     <groupId>51b3d95e-0179-1000-fe4a-3f3a5cedb39f</groupId>
     <name>SEND_REMOTE_DATA</name>
     <snippet>
         <processGroups>
-            <id>b562321f-c870-33e7-0000-000000000000</id>
+            <id>6eb05411-8f53-3fe0-0000-000000000000</id>
             <parentGroupId>1130f929-3942-33d6-0000-000000000000</parentGroupId>
             <position>
                 <x>0.0</x>
@@ -14,13 +14,13 @@
             <comments></comments>
             <contents>
                 <connections>
-                    <id>0a663e25-32fd-37e2-0000-000000000000</id>
-                    <parentGroupId>b562321f-c870-33e7-0000-000000000000</parentGroupId>
+                    <id>c14e04fd-4bc9-3260-0000-000000000000</id>
+                    <parentGroupId>6eb05411-8f53-3fe0-0000-000000000000</parentGroupId>
                     <backPressureDataSizeThreshold>1 GB</backPressureDataSizeThreshold>
                     <backPressureObjectThreshold>10000</backPressureObjectThreshold>
                     <destination>
-                        <groupId>062e5db9-a96f-3c0b-0000-000000000000</groupId>
-                        <id>47935ad5-3e22-30a9-998d-4fc5afea16a7</id>
+                        <groupId>aeb2f6a6-da35-329d-0000-000000000000</groupId>
+                        <id>47935ad5-3e22-30a9-81c1-568f60e9cd4f</id>
                         <type>REMOTE_INPUT_PORT</type>
                     </destination>
                     <flowFileExpiration>0 sec</flowFileExpiration>
@@ -32,15 +32,15 @@
                     <name></name>
                     <selectedRelationships>success</selectedRelationships>
                     <source>
-                        <groupId>b562321f-c870-33e7-0000-000000000000</groupId>
-                        <id>7b1eaab8-6989-315f-0000-000000000000</id>
+                        <groupId>6eb05411-8f53-3fe0-0000-000000000000</groupId>
+                        <id>d00a1d05-45b0-36fe-0000-000000000000</id>
                         <type>PROCESSOR</type>
                     </source>
                     <zIndex>0</zIndex>
                 </connections>
                 <processors>
-                    <id>7b1eaab8-6989-315f-0000-000000000000</id>
-                    <parentGroupId>b562321f-c870-33e7-0000-000000000000</parentGroupId>
+                    <id>d00a1d05-45b0-36fe-0000-000000000000</id>
+                    <parentGroupId>6eb05411-8f53-3fe0-0000-000000000000</parentGroupId>
                     <position>
                         <x>288.0</x>
                         <y>152.0</y>
@@ -170,13 +170,13 @@
                         <autoTerminate>false</autoTerminate>
                         <name>success</name>
                     </relationships>
-                    <state>STOPPED</state>
+                    <state>RUNNING</state>
                     <style/>
                     <type>org.apache.nifi.processors.standard.TailFile</type>
                 </processors>
                 <remoteProcessGroups>
-                    <id>062e5db9-a96f-3c0b-0000-000000000000</id>
-                    <parentGroupId>b562321f-c870-33e7-0000-000000000000</parentGroupId>
+                    <id>aeb2f6a6-da35-329d-0000-000000000000</id>
+                    <parentGroupId>6eb05411-8f53-3fe0-0000-000000000000</parentGroupId>
                     <position>
                         <x>912.0</x>
                         <y>136.0</y>
@@ -186,22 +186,23 @@
                     <contents>
                         <inputPorts>
                             <batchSettings/>
+                            <comments></comments>
                             <concurrentlySchedulableTaskCount>1</concurrentlySchedulableTaskCount>
                             <connected>true</connected>
                             <exists>true</exists>
-                            <groupId>51d4f78b-0179-1000-ffff-ffffa1fc37e0</groupId>
-                            <id>47935ad5-3e22-30a9-998d-4fc5afea16a7</id>
+                            <groupId>062e5db9-a96f-3c0b-bf31-1580c3142080</groupId>
+                            <id>47935ad5-3e22-30a9-81c1-568f60e9cd4f</id>
                             <name>From MiNiFi</name>
                             <targetId>51caa0d1-0179-1000-0000-00004d377fa7</targetId>
-                            <targetRunning>false</targetRunning>
-                            <transmitting>false</transmitting>
+                            <targetRunning>true</targetRunning>
+                            <transmitting>true</transmitting>
                             <useCompression>false</useCompression>
                         </inputPorts>
                     </contents>
                     <proxyHost></proxyHost>
                     <proxyUser></proxyUser>
-                    <targetUri>http://192.168.173.1:49189</targetUri>
-                    <targetUris>http://192.168.173.1:49189</targetUris>
+                    <targetUri>http://192.168.173.1:8888/nifi</targetUri>
+                    <targetUris>http://192.168.173.1:8888/nifi</targetUris>
                     <transportProtocol>HTTP</transportProtocol>
                     <yieldDuration>10 sec</yieldDuration>
                 </remoteProcessGroups>
@@ -212,5 +213,5 @@
             <variables/>
         </processGroups>
     </snippet>
-    <timestamp>05/09/2021 16:25:02 UTC</timestamp>
+    <timestamp>05/09/2021 18:36:16 UTC</timestamp>
 </template>
